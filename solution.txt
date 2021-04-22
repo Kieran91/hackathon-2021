@@ -1,0 +1,32 @@
+
+
+- fake data api
+-- bond bids
+
+- frontend
+-- form to submit bids
+
+- 
+
+
+
+
+
+
+Flow:
+- insight dude creates trades/bonds    
+- counterparties are informed - somehow
+- counterparties acknowledge
+- counterparties submits bids
+- bids stored in db
+- bidding ends
+- insight dude loads page that shows bids in order - top 3?
+- PM approves the results and allows each counterparty to be notified
+- Generates text thing -> KM wins <bond> at @ 100 and cover @ 99 please conform if you are happy to release cover
+- Text is sent to winners
+- counterparty confirms
+-- if yes then something?
+-- if no then 2nd place -> then 3rd -> etc etc etc?
+- Monthly reports sheet gets updated for counterparty @ date 
+
+
