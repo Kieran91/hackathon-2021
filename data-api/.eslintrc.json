@@ -1,0 +1,26 @@
+{
+    "env": {
+        "es6": true,
+        "node": true
+    },
+    "extends": [
+        "airbnb-base",
+        "plugin:prettier/recommended"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module"
+    },
+    "plugins": [],
+    "root": true,
+    "rules": {
+        "import/no-extraneous-dependencies": [ "error", { "devDependencies": true } ],
+        "no-plusplus": [ "error", { "allowForLoopAfterthoughts": true } ],
+        "no-restricted-syntax": [ "error", "ForInStatement" ],
+        "prettier/prettier": [ "error" ]
+    }
+}
