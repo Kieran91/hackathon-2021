@@ -1,35 +1,57 @@
-import React, { Component } from 'react'
+import React, { useReducer, useState } from 'react';
 
-export default class Bonds extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {value: ''};
-    
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-      }
-    
-      handleChange(event) {
-        this.setState({value: event.target.value});
-      }
-    
-      handleSubmit(event) {
-        alert('You have submitted a bond to the counterparties: ' + this.state.value);
-        event.preventDefault();
-        console.log(this.state.value)
-      }
-    
-      render() {
-        return (
-          <form onSubmit={this.handleSubmit}>
-            <label>
-              Enter Bonds:
-              <input type="text" value={this.state.value} onChange={this.handleChange} />
-            </label>
-            <input type="submit" value="Submit" />
-          </form>
-        );
-      }
+const formReducer = (state, event) => {
+ return {
+   ...state,
+   [event.name]: event.value
+ }
 }
 
-//BELCO 3X DNVE
+function Bonds() {
+  const [formData, setFormData] = useReducer(formReducer, {});
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    console.log(JSON.stringify(formData))
+    setSubmitting(true);
+  }
+
+  const handleChange = event => {
+    setFormData({
+      name: event.target.name,
+      value: event.target.value,
+    });
+  }
+
+
+  return(
+    <div className="wrapper">
+      <h1>Insight Investment</h1>
+
+      <form onSubmit={handleSubmit}>
+        <fieldset>
+          <label>
+            <p>Trades</p>
+            <input name="trade" onChange={handleChange}/>
+            <input name="size" onChange={handleChange}/>
+
+          </label>
+        </fieldset>
+        <button type="submit">Submit</button>
+      </form>
+      {submitting &&
+        <div>
+        You are submitting the following:
+        <ul>
+          {Object.entries(formData).map(([name, value]) => (
+            <li key={name}><strong>{name}</strong>:{value.toString()}</li>
+          ))}
+        </ul>
+      </div>
+      }
+    </div>
+  )
+}
+
+export default Bonds;
