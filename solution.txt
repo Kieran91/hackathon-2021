@@ -15,6 +15,7 @@
 
 Flow:
 - insight dude creates bonds    -  {"name":"BELCO 3X DNVE","size":"2750000"}
+- auction -> select what counterparties should be notified and when
 - counterparties are informed - somehow
 - counterparties acknowledge
 - counterparties submits bids

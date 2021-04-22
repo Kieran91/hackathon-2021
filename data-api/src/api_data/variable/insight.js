@@ -3,15 +3,28 @@ import { name, internet, datatype, company, finance } from 'faker';
 const data = {};
 
 function generateCounterparties() {
-  data.users = [];
-  for (let i = 1; i <= 4; i++) {
-    data.users.push({
-      id: i,
-      company: company.companyName(),
-      symbol: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 3),
-      email: internet.email()
-    });
-  }
+  data.users = [
+    {
+      "id": 1,
+      "company": "Goldman Sachs",
+      "name": "GS",
+    },
+    {
+      "id": 2,
+      "company": "JP Morgon",
+      "name": "JPM",
+    },
+    {
+      "id": 3,
+      "company": "BNP",
+      "name": "BNP Paribas",
+    },
+    {
+      "id": 4,
+      "company": "CITI",
+      "name": "Citigroup Inc",
+    }
+  ]
 }
 
 function generateUsers() {
