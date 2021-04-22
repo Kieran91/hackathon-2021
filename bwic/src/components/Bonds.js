@@ -14,8 +14,9 @@ export default class Bonds extends Component {
       }
     
       handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.value);
+        alert('You have submitted a bond to the counterparties: ' + this.state.value);
         event.preventDefault();
+        console.log(this.state.value)
       }
     
       render() {
