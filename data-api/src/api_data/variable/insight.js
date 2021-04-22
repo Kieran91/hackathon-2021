@@ -2,6 +2,18 @@ import { name, internet, datatype, company, finance } from 'faker';
 
 const data = {};
 
+function generateCounterparties() {
+  data.users = [];
+  for (let i = 1; i <= 4; i++) {
+    data.users.push({
+      id: i,
+      company: company.companyName(),
+      symbol: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 3),
+      email: internet.email()
+    });
+  }
+}
+
 function generateUsers() {
   data.users = [];
   for (let i = 1; i <= 4; i++) {
@@ -41,7 +53,7 @@ function generateTrades() {
 }
 
 export default function generateMockData() {
-  generateUsers();
+  generateCounterparties();
   generateBonds();
   // generateTrades();
   return data;

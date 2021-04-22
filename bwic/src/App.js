@@ -1,12 +1,14 @@
 import React, { useReducer, useState } from 'react';
 import './App.css';
-
+import axios from "axios"
 const formReducer = (state, event) => {
  return {
    ...state,
    [event.name]: event.value
  }
 }
+
+var baseUrlApi = "http://localhost:3001"
 
 function App() {
   const [formData, setFormData] = useReducer(formReducer, {});
@@ -15,6 +17,10 @@ function App() {
   const handleSubmit = event => {
     event.preventDefault();
     console.log(JSON.stringify(formData))
+    //{"trade":"HELLO","amount":"500000"}
+    axios.post(baseUrlApi+"/bonds", formData)
+    axios.get(baseUrlApi+"/users")
+
     setSubmitting(true);
   }
 
@@ -32,9 +38,9 @@ function App() {
       <form onSubmit={handleSubmit}>
         <fieldset>
           <label>
-            <p>Trades</p>
-            <input name="trade" onChange={handleChange} placeholder="Enter Bond Name"/>
-            <input name="amount" onChange={handleChange} placeholder="Enter Bond Size"/>
+            <p>Create Bond</p>
+            <input name="name" onChange={handleChange} placeholder="Enter Bond Name"/>
+            <input name="size" onChange={handleChange} placeholder="Enter Bond Size"/>
           </label>
         </fieldset>
         <button type="submit">Submit</button>
